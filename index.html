@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Kartu Digital Anggota Koperasi</title>
+
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- STYLE -->
+<style>
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY */
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #061b12, #020b07);
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  color: #fff;
+}
+
+/* KARTU UTAMA */
+.card {
+  width: 100%;
+  max-width: 390px;
+  background: linear-gradient(160deg, #0f3d28, #062015);
+  border-radius: 22px;
+  padding: 20px;
+  box-shadow: 0 0 35px rgba(0, 255, 160, 0.35);
+  border: 1px solid rgba(0, 255, 160, 0.35);
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.25);
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.logo-wrap {
+  width: 86px;
+  height: 86px;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 18px rgba(0, 255, 160, 0.6),
+              inset 0 0 12px rgba(255, 255, 255, 0.25);
+  transition: 0.4s ease;
+  animation: float 4s ease-in-out infinite;
+}
+
+.logo-wrap:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 28px rgba(0, 255, 160, 0.9);
+}
+
+.logo-wrap img {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.header h1 {
+  font-size: 18px;
+  margin: 10px 0 5px 0;
+  font-weight: 700;
+  color: #7dffb2;
+}
+
+.header small {
+  font-size: 11px;
+  opacity: 0.85;
+}
+
+/* STATUS */
+.status {
+  margin: 15px auto;
+  text-align: center;
+}
+
+.status span {
+  padding: 6px 18px;
+  border-radius: 20px;
+  background: rgba(0, 255, 157, 0.2);
+  color: #00ff9d;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.status-inactive {
+  background: rgba(255, 61, 0, 0.2) !important;
+  color: #ffa000 !important;
+}
+
+/* IDENTITAS */
+.identity {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.identity h2 {
+  margin: 5px 0;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.identity p {
+  margin: 0;
+  font-size: 12px;
+  color: #a9ffd1;
+}
+
+/* STATS */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.stat {
+  background: rgba(0, 255, 160, 0.15);
+  border-radius: 14px;
+  padding: 12px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.stat:hover {
+  transform: translateY(-3px);
+}
+
+.stat small {
+  font-size: 10px;
+  opacity: 0.9;
+  display: block;
+  color: #d1ffec;
+}
+
+.stat b {
+  display: block;
+  margin-top: 6px;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+/* DATA DETAIL */
+.data {
+  font-size: 13px;
+  margin: 20px 0;
+}
+
+.data div {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.25);
+  align-items: center;
+}
+
+.data span {
+  color: #b6ffd9;
+  font-weight: 500;
+}
+
+.data b {
+  color: #ffffff;
+  text-align: right;
+  max-width: 60%;
+  word-break: break-word;
+}
+
+/* ACTION BUTTONS */
+.actions {
+  display: flex;
+  gap: 12px;
+  margin: 20px 0 10px;
+}
+
+.actions button {
+  flex: 1;
+  border: none;
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(0, 255, 160, 0.2);
+  color: #00ff9d;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+.actions button:hover {
+  background: #00ff9d;
+  color: #003a24;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 255, 160, 0.4);
+}
+
+/* FOOTER */
+.footer {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 10px;
+  opacity: 0.75;
+  color: #a9ffd1;
+}
+
+/* LOADING */
+.loading {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0, 255, 160, 0.3);
+  border-top: 3px solid #00ff9d;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading p {
+  font-size: 14px;
+  color: #a9ffd1;
+  margin-top: 10px;
+}
+
+/* LAST UPDATE */
+.last-update {
+  font-size: 9px;
+  text-align: center;
+  margin-top: 8px;
+  opacity: 0.6;
+  color: #7dffb2;
+}
+
+/* ERROR MESSAGE */
+.error-message {
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  border-radius: 10px;
+  padding: 12px;
+  margin: 15px 0;
+  text-align: center;
+  font-size: 12px;
+  color: #ff9999;
+  display: none;
+}
+
+/* ID DISPLAY */
+.id-display {
+  text-align: center;
+  font-size: 11px;
+  color: #7dffb2;
+  margin-top: 8px;
+  padding: 6px;
+  background: rgba(0, 255, 160, 0.1);
+  border-radius: 8px;
+  display: inline-block;
+}
+
+/* TOAST NOTIFICATION */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 255, 160, 0.9);
+  color: #003a24;
+  padding: 12px 24px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { bottom: -50px; opacity: 0; }
+  to { bottom: 20px; opacity: 1; }
+}
+
+/* RESPONSIVE */
+@media (max-width: 400px) {
+  .card {
+    padding: 15px;
+  }
+  
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  
+  .actions {
+    flex-direction: column;
+  }
+  
+  .actions button {
+    width: 100%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <!-- LOADING STATE -->
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <p>Memuat data anggota...</p>
+    <div class="id-display" id="loadingId">ID: Loading...</div>
+  </div>
+  
+  <!-- ERROR MESSAGE -->
+  <div class="error-message" id="errorMessage" style="display: none;">
+    ⚠️ <span id="errorText"></span>
+  </div>
+  
+  <!-- KONTEN UTAMA (Awalnya tersembunyi) -->
+  <div id="content" style="display: none;">
+    <div class="header">
+      <div class="logo-wrap">
+        <img id="fotoProfil" src="https://ui-avatars.com/api/?name=K&background=0f3d28&color=fff" alt="Foto Profil">
+      </div>
+      <h1>KOPERASI ASMARA TANI</h1>
+      <small>Kartu Anggota Digital</small>
+    </div>
+
+    <div class="status">
+      <span id="statusText">AKTIF</span>
+    </div>
+
+    <div class="identity">
+      <h2 id="nama">Nama Anggota</h2>
+      <p id="nia">NIA: Loading...</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <small>Simpanan Pokok</small>
+        <b id="pokok">Rp 0</b>
+      </div>
+      <div class="stat">
+        <small>Simpanan Wajib</small>
+        <b id="wajib">Rp 0</b>
+      </div>
+      <div class="stat">
+        <small>Simpanan Sukarela</small>
+        <b id="sukarela">Rp 0</b>
+      </div>
+    </div>
+
+    <div class="data">
+      <div><span>Alamat</span><b id="alamat">-</b></div>
+      <div><span>Jenis Kelamin</span><b id="jk">-</b></div>
+      <div><span>Agama</span><b id="agama">-</b></div>
+      <div><span>NIK</span><b id="nik">-</b></div>
+      <div><span>Email</span><b id="email">-</b></div>
+      <div><span>Telepon</span><b id="telepon">-</b></div>
+      <div><span>Tanggal Daftar</span><b id="tglDaftar">-</b></div>
+      <div><span>Total Simpanan</span><b id="totalSimpanan">Rp 0</b></div>
+      <div><span>Total Pinjaman</span><b id="totalPinjaman">Rp 0</b></div>
+      <div><span>Estimasi SHU</span><b id="shu">Rp 0</b></div>
+    </div>
+
+    <div class="actions">
+      <button onclick="printCard()">🖨️ Cetak Kartu</button>
+      <button onclick="refreshData()">🔄 Refresh Data</button>
+      <button onclick="showDebugInfo()">🐛 Debug</button>
+    </div>
+
+    <div class="footer">
+      Data real-time dari sistem koperasi<br>
+      © Koperasi Asmara Tani <span id="currentYear">2024</span>
+      <div class="last-update" id="lastUpdate">Terakhir update: -</div>
+    </div>
+  </div>
+</div>
+
+<!-- SCRIPT -->
+<script>
+// =================== KONFIGURASI ===================
+const CONFIG = {
+  // URL Google Apps Script Anda
+  APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbwpYU8i5F7hwT-kK9xzmpWaxmkswEMdt4XXoUZMkrNVJeetM-F8q9Wj_EGZ70QRS28GDg/exec',
+  
+  // Default ID jika tidak ada parameter URL
+  DEFAULT_ID: 'NIA-001',
+  
+  // Data demo untuk testing
+  DEMO_DATA: {
+    'NIA-001': {
+      'Foto': 'https://ui-avatars.com/api/?name=ES&background=0f3d28&color=fff',
+      'ID/NIA': 'NIA-001',
+      'Posisi': 'Ketua',
+      'Nama_Lengkap': 'ELDI SUGIANTO, S.Kom',
+      'Alamat_Lengkap': 'Pamijahan, Bogor',
+      'Jenis_Kelamin': 'Laki-laki',
+      'Email': 'eldisugianto@example.com',
+      'WhatsApp': '081234567890',
+      'NIK': '3201171212810001',
+      'Agama': 'Islam',
+      'Status': 'Aktif',
+      'Tanggal_Bergabung': '2023-01-15',
+      'Simpanan_Pokok': 200000,
+      'Simpanan_Wajib': 50000,
+      'Simpanan_Sukarela': 100000,
+      'Total_Simpanan': 350000,
+      'Total_Pinjaman': 0,
+      'SHU_Estimasi': 50000,
+      'LastUpdated': new Date().toISOString()
+    }
+  }
+};
+
+// =================== VARIABEL GLOBAL ===================
+let currentMemberId = CONFIG.DEFAULT_ID;
+let allMembersData = {};
+
+// =================== FUNGSI UTILITAS ===================
+function formatRupiah(angka) {
+  if (!angka && angka !== 0) return 'Rp 0';
+  const number = parseFloat(angka) || 0;
+  return 'Rp ' + number.toLocaleString('id-ID');
+}
+
+function formatDate(dateString) {
+  if (!dateString || dateString === '-') return '-';
+  try {
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) return dateString;
+    return date.toLocaleDateString('id-ID', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    });
+  } catch {
+    return dateString;
+  }
+}
+
+function getParameterByName(name) {
+  const url = new URL(window.location.href);
+  return url.searchParams.get(name);
+}
+
+function showToast(message) {
+  // Hapus toast sebelumnya
+  const oldToast = document.querySelector('.toast');
+  if (oldToast) oldToast.remove();
+  
+  // Buat toast baru
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.textContent = message;
+  document.body.appendChild(toast);
+  
+  // Hapus setelah 3 detik
+  setTimeout(() => {
+    if (toast.parentNode) {
+      toast.remove();
+    }
+  }, 3000);
+}
+
+function showError(message) {
+  const errorEl = document.getElementById('errorMessage');
+  const errorText = document.getElementById('errorText');
+  
+  errorText.textContent = message;
+  errorEl.style.display = 'block';
+  
+  // Auto-hide setelah 10 detik
+  setTimeout(() => {
+    errorEl.style.display = 'none';
+  }, 10000);
+}
+
+function hideError() {
+  document.getElementById('errorMessage').style.display = 'none';
+}
+
+// =================== LOAD DATA ===================
+async function loadMemberData() {
+  try {
+    // 1. Ambil ID dari URL
+    currentMemberId = getParameterByName('id') || CONFIG.DEFAULT_ID;
+    console.log('Loading data for ID:', currentMemberId);
+    
+    // 2. Tampilkan loading
+    document.getElementById('loading').style.display = 'block';
+    document.getElementById('content').style.display = 'none';
+    document.getElementById('loadingId').textContent = `ID: ${currentMemberId}`;
+    hideError();
+    
+    // 3. Coba ambil data dari Apps Script
+    let memberData = null;
+    
+    try {
+      console.log('Fetching from:', CONFIG.APPS_SCRIPT_URL);
+      const response = await fetch(CONFIG.APPS_SCRIPT_URL + '?t=' + Date.now());
+      
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+      
+      const data = await response.json();
+      console.log('Data received:', data);
+      
+      // Cari data anggota berdasarkan ID
+      if (data && typeof data === 'object') {
+        // Cari dengan berbagai kemungkinan format ID
+        memberData = data[currentMemberId] || 
+                    data[currentMemberId.toLowerCase()] || 
+                    data[currentMemberId.toUpperCase()];
+      }
+      
+    } catch (fetchError) {
+      console.warn('Failed to fetch from Apps Script, using demo data:', fetchError);
+      memberData = CONFIG.DEMO_DATA[currentMemberId];
+    }
+    
+    // 4. Jika tidak ada data, gunakan demo
+    if (!memberData) {
+      console.warn('No data found, using demo');
+      memberData = CONFIG.DEMO_DATA[currentMemberId] || CONFIG.DEMO_DATA['NIA-001'];
+      showError('Data tidak ditemukan, menampilkan data demo');
+    }
+    
+    // 5. Update UI
+    updateUI(memberData);
+    
+    // 6. Tampilkan konten
+    setTimeout(() => {
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('content').style.display = 'block';
+      showToast('Data berhasil dimuat!');
+    }, 500);
+    
+  } catch (error) {
+    console.error('Error loading data:', error);
+    
+    // Tampilkan error dan gunakan data demo
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+    showError(`Error: ${error.message}. Menggunakan data demo.`);
+    
+    const demoData = CONFIG.DEMO_DATA[currentMemberId] || CONFIG.DEMO_DATA['NIA-001'];
+    updateUI(demoData);
+  }
+}
+
+function updateUI(data) {
+  if (!data) return;
+  
+  // Format data dari spreadsheet
+  const memberData = {
+    id: data['ID/NIA'] || currentMemberId,
+    nama: data['Nama_Lengkap'] || 'Nama tidak tersedia',
+    email: data['Email'] || '-',
+    status: data['Status'] || 'Aktif',
+    posisi: data['Posisi'] || '-',
+    alamat: data['Alamat_Lengkap'] || '-',
+    whatsapp: data['WhatsApp'] || '-',
+    jenisKelamin: data['Jenis_Kelamin'] || '-',
+    agama: data['Agama'] || '-',
+    nik: data['NIK'] || '-',
+    tanggalBergabung: data['Tanggal_Bergabung'] || '-',
+    simpananPokok: parseFloat(data['Simpanan_Pokok']) || 0,
+    simpananWajib: parseFloat(data['Simpanan_Wajib']) || 0,
+    simpananSukarela: parseFloat(data['Simpanan_Sukarela']) || 0,
+    totalSimpanan: parseFloat(data['Total_Simpanan']) || 0,
+    totalPinjaman: parseFloat(data['Total_Pinjaman']) || 0,
+    shuEstimasi: parseFloat(data['SHU_Estimasi']) || 0,
+    foto: data['Foto'] || `https://ui-avatars.com/api/?name=${encodeURIComponent(data['Nama_Lengkap']?.charAt(0) || 'A')}&background=0f3d28&color=fff`
+  };
+  
+  // Update UI elements
+  document.getElementById('nama').textContent = memberData.nama;
+  document.getElementById('nia').textContent = `NIA: ${memberData.id}`;
+  
+  // Status
+  const statusEl = document.getElementById('statusText');
+  statusEl.textContent = memberData.status;
+  statusEl.className = memberData.status.toLowerCase() === 'aktif' ? '' : 'status-inactive';
+  
+  // Simpanan
+  document.getElementById('pokok').textContent = formatRupiah(memberData.simpananPokok);
+  document.getElementById('wajib').textContent = formatRupiah(memberData.simpananWajib);
+  document.getElementById('sukarela').textContent = formatRupiah(memberData.simpananSukarela);
+  
+  // Data pribadi
+  document.getElementById('alamat').textContent = memberData.alamat;
+  document.getElementById('jk').textContent = memberData.jenisKelamin;
+  document.getElementById('agama').textContent = memberData.agama;
+  document.getElementById('nik').textContent = memberData.nik;
+  document.getElementById('email').textContent = memberData.email;
+  document.getElementById('telepon').textContent = memberData.whatsapp;
+  document.getElementById('tglDaftar').textContent = formatDate(memberData.tanggalBergabung);
+  
+  // Keuangan
+  const totalSimpanan = memberData.totalSimpanan || 
+                       (memberData.simpananPokok + memberData.simpananWajib + memberData.simpananSukarela);
+  
+  document.getElementById('totalSimpanan').textContent = formatRupiah(totalSimpanan);
+  document.getElementById('totalPinjaman').textContent = formatRupiah(memberData.totalPinjaman);
+  document.getElementById('shu').textContent = formatRupiah(memberData.shuEstimasi);
+  
+  // Foto
+  const fotoEl = document.getElementById('fotoProfil');
+  fotoEl.src = memberData.foto;
+  fotoEl.alt = memberData.nama;
+  
+  // Update timestamp dan tahun
+  const now = new Date();
+  document.getElementById('lastUpdate').textContent = 
+    `Terakhir update: ${now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })}`;
+  document.getElementById('currentYear').textContent = now.getFullYear();
+  
+  // Update title
+  document.title = `Kartu Anggota - ${memberData.id}`;
+}
+
+// =================== FUNGSI ACTION ===================
+function printCard() {
+  window.print();
+  showToast('Mempersiapkan cetakan...');
+}
+
+function refreshData() {
+  showToast('Memperbarui data...');
+  loadMemberData();
+}
+
+function showDebugInfo() {
+  console.log('=== DEBUG INFO ===');
+  console.log('Current Member ID:', currentMemberId);
+  console.log('URL Parameters:', new URLSearchParams(window.location.search).toString());
+  console.log('Apps Script URL:', CONFIG.APPS_SCRIPT_URL);
+  console.log('All Members Data:', allMembersData);
+  console.log('==================');
+  
+  showToast('Info debug ditampilkan di console (F12)');
+}
+
+// =================== INISIALISASI ===================
+function initApp() {
+  console.log('Aplikasi Kartu Anggota dimulai...');
+  
+  // Load data
+  loadMemberData();
+  
+  // Setup auto-refresh setiap 30 detik
+  setInterval(() => {
+    if (!document.hidden) {
+      loadMemberData();
+    }
+  }, 30000);
+  
+  // Event listener untuk visibility change
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      loadMemberData();
+    }
+  });
+}
+
+// Start app when DOM is loaded
+document.addEventListener('DOMContentLoaded', initApp);
+
+// Fallback jika DOMContentLoaded sudah lewat
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
+</script>
+</body>
+</html>
