@@ -1,6 +1,6 @@
 export async function getServerSideProps() {
   const res = await fetch(
-    "https://script.google.com/macros/s/AKfycbz-xzfVBLnmxYJrOkSCgIzinifZegEqgJLQrF3I2GM3WCaC8Ju8KX6CrxtyKU9jl-8/exec"
+    "https://script.google.com/macros/s/AKfycbxZtNu-nEfVM6Fv0w4iHXTPixTBlp-pJHuhvngytbGlCpmDBqV2uG8_JgNGtJtWkLd_/exec"
   );
 
   const json = await res.json();
